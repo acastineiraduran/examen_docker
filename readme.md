@@ -10,26 +10,19 @@ Se valorará:
 * Base de datos enlazados al PhpStorm
 * Claridad en la explicación
 
-## Inicio repositorio en GitHub y creo _.yml_
-
-```bash
-touch docker-compose.yml
-
-```
-
 ## Configuracion Docker Compose
+Hacemos configuración del dichero _.yml_ y lo lanzamos con `docker compose up -d`.
 
-## Comprobacion
-### Prestashop
-![ip address](imagenes/ipaddr.png)
+Tenemos que estar dentro del directorio donde se encuentra el Compose.
 
-Buscar en el navegador DIRECCION_IP:PUERTO_HOST_PRESTASHOP
-![instalacion presta](imagenes/install.png)
+Ambos contenedores se crearán con un red tipo `bridge` y esto hace que estén contectados entre sí mediante la misma interfaz de red.
 
-Instalamos Prestashop
+> Algunos comentarios en el fichero ._yml_
+
+## Comprobacion de la conexión
 
 ### SQL
-A. Desde el host usando el puerto 3307: 
+#### A. Desde el host usando el puerto 3307:
 ```bash
 $ docker ps   
 CONTAINER ID   IMAGE                   COMMAND                  CREATED         STATUS         PORTS                                   NAMES
@@ -39,7 +32,8 @@ $ docker exec -it a90855b86e74 bash
 ```
 
 Desde dentro del contenedor ejecutar `mysql -uroot -padmin -h localhost --port 3307`
-Salida
+
+Salida:
 ```bash
 mysql: [Warning] Using a password on the command line interface can be insecure.
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -57,4 +51,35 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql> 
 ```
 
-B. Desde un contenedor en la red usando la URL
+#### B. Desde PhpStorm
+![db phpsotrm](imagenes/phpStorm.png)
+Hacemos conexion a una base de datos MySQL y hacemos 2 consultas.
+![base de datos nueva](imagenes/showdb.png)
+
+```bash
+MySQL [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| nuevadb            |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0,003 sec)
+```
+
+### Prestashop
+![ip address](imagenes/ipaddr.png)
+
+Buscar en el navegador DIRECCION_IP:PUERTO_HOST_PRESTASHOP
+![instalacion presta](imagenes/install.png)
+
+Instalamos Prestashop
+
+![config](/imagenes/comprobacionweb.png)
+
+
+Resultado:
+![comprobacion web](/imagenes/comprobacionwebc.png)
