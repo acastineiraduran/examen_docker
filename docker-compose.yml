@@ -2,13 +2,13 @@ services:
     prestashop:
         image: prestashop/prestashop
         environment:
-            - DB_SERVER=db
+            - DB_SERVER=db # para conectarnos al servidor de base de datos
         ports:
-            - 8080:80
+            - 8080:80 # [PUERTO_HOST:PUERTO_CONTENEDOR]
 
     db:
         image: mysql:latest
         environment:
             - MYSQL_ROOT_PASSWORD=admin
         ports:
-            - 3307:3306
+            - 3307:3306 # [PUERTO_HOST:PUERTO_CONTENEDOR]
