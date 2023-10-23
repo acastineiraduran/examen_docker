@@ -52,10 +52,17 @@ mysql>
 ```
 
 #### B. Desde PhpStorm
+Hacemos conexion a una base de datos MySQL
 ![db phpsotrm](imagenes/phpStorm.png)
-Hacemos conexion a una base de datos MySQL y hacemos 2 consultas.
+
+Rellenamos las variables de entorno como las hemos rellenado en el Compose y descargamos los drivers:
+![configuracion db](imagenes/confdb.png)
+
+
+Hacemos 2 consultas.
 ![base de datos nueva](imagenes/showdb.png)
 
+Comprobamos que se ha creado la tabla correctamente entrando a la db desde el terminal
 ```bash
 MySQL [(none)]> SHOW DATABASES;
 +--------------------+
