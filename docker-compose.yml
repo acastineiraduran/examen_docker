@@ -2,8 +2,7 @@ services:
     prestashop:
         image: prestashop/prestashop
         environment:
-            - DB_SERVER=sql_data
-        #volumens:
+            - DB_SERVER=db
         ports:
             - 8080:80
 
@@ -11,7 +10,5 @@ services:
         image: mysql:latest
         environment:
             - MYSQL_ROOT_PASSWORD=admin
-        #volumes:
-        expose: 
+        ports:
             - 3307:3306
-        
